@@ -13,8 +13,8 @@ function App() {
       <MainContent />
       <UserProfile
         name="Yerosen"
-        Age={30}
-        Bio="Software Developer"
+        age={30}
+        bio="Software Developer"
       />
       <Footer />
       <WelcomeMessage />
