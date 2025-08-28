@@ -11,10 +11,10 @@ function App() {
     <>
       <Header />
       <MainContent />
-      <UserProfile
-        name="Yerosen"
-        Age={30}
-        Bio="Software Developer"
+      <UserProfile 
+        name="Alice"
+        age="25"
+        bio="Loves hiking and photography" 
       />
       <Footer />
       <WelcomeMessage />
