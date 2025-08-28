@@ -9,7 +9,7 @@ function App() {
   return (
     <>
        <Header />
-        <Maincontent />
+        <MainContent />
         <Footer />
       <WelcomeMessage />
     </>
