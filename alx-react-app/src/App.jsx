@@ -9,6 +9,7 @@ function App() {
 
   return (
     <>
+<<<<<<< HEAD
       <Header />
       <MainContent />
       <UserProfile
@@ -17,6 +18,11 @@ function App() {
         bio="Software Developer"
       />
       <Footer />
+=======
+       <Header />
+        <MainContent />
+        <Footer />
+>>>>>>> aeb34645f257b3343ae1e2bcbb86924752050cbe
       <WelcomeMessage />
 
     </>
