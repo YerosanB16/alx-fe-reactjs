@@ -1,8 +1,8 @@
 
-import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
 import Maincontent from './components/MainContent.jsx'
+import Footer from './components/Footer.jsx'
+import WelcomeMessage from './components/WelcomeMessage'
 
 function App() {
 
