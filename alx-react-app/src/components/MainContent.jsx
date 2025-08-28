@@ -1,5 +1,5 @@
 
-function Maincontent() {
+function MainContent() {
   return (
     <>
       <main>
@@ -8,4 +8,4 @@ function Maincontent() {
     </>
   )
 }
-export default Maincontent;
+export default MainContent;
