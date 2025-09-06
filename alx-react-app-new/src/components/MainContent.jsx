@@ -2,8 +2,8 @@
 function MainContent() {
   return (
     <>
-      <main>
-        <p>I love to visit New York, Paris, and Tokyo.</p>
+      <main style={{ backgroundColor: 'navy', color: 'white', textAlign: 'center' }}>
+        <p style={{ fontStyle: 'italic' }}> I love to visit New York, Paris, and Tokyo.</p>
       </main>
     </>
   )
