@@ -4,7 +4,7 @@ import MainContent from './components/MainContent.jsx'
 import Footer from './components/Footer.jsx'
 import WelcomeMessage from './components/WelcomeMessage'
 import UserProfile from './components/UserProfile.jsx'
-
+import Counter from './components/Counter.jsx'
 function App() {
 
   return (
@@ -18,6 +18,7 @@ function App() {
       />
       <Footer />
       <WelcomeMessage />
+      <Counter />
 
     </>
   )
