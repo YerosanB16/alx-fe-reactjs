@@ -6,13 +6,14 @@ function Navbar() {
       style={{
         backgroundColor: "navy",
         padding: "10px",
-        textAlign: "center"
+        display: "flex",             // added
+        justifyContent: "center"     // added
       }}
     >
-      <Link to="/" style={{ color: "white", margin: "10px" }}>Home</Link>
-      <Link to="/about" style={{ color: "white", margin: "10px" }}>About</Link>
-      <Link to="/services" style={{ color: "white", margin: "10px" }}>Services</Link>
-      <Link to="/contact" style={{ color: "white", margin: "10px" }}>Contact</Link>
+      <Link to="/" style={{ color: "white", margin: "0 10px" }}>Home</Link>
+      <Link to="/about" style={{ color: "white", margin: "0 10px" }}>About</Link>
+      <Link to="/services" style={{ color: "white", margin: "0 10px" }}>Services</Link>
+      <Link to="/contact" style={{ color: "white", margin: "0 10px" }}>Contact</Link>
     </nav>
   );
 }
