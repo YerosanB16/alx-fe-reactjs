@@ -17,7 +17,7 @@ function App() {
             element={
               <>
                 <AddRecipeForm />
-                <SearchBar />
+                  <SearchBar />
                 <RecipeList />
               </>
             }
