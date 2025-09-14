@@ -1,13 +1,17 @@
+// src/components/RecipeList.jsx
 import React, { useState } from 'react';
 import { useRecipeStore } from '../store/recipeStore';
+import { Link } from 'react-router-dom';
 import EditRecipeForm from './EditRecipeForm';
 
 export default function RecipeList() {
-  const recipes = useRecipeStore(state => state.recipes);
+  const recipes = useRecipeStore(state =>
+    state.searchTerm ? state.filteredRecipes : state.recipes
+  );
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
   const [editingId, setEditingId] = useState(null);
 
-  if (!recipes.length) return <p>No recipes yet. Add one!</p>;
+  if (!recipes.length) return <p>No recipes found.</p>;
 
   return (
     <div>
@@ -28,8 +32,10 @@ export default function RecipeList() {
             />
           ) : (
             <>
-              <h3>{recipe.title}</h3>
-              <p>{recipe.description}</p>
+              <Link to={`/recipe/${recipe.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                <h3>{recipe.title}</h3>
+                <p>{recipe.description}</p>
+              </Link>
 
               <button
                 onClick={() => deleteRecipe(recipe.id)}
