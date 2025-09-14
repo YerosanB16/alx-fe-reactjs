@@ -1,23 +1,29 @@
 import { create } from 'zustand';
 
-export const useRecipeStore = create((set) => ({
-  recipes: JSON.parse(localStorage.getItem('recipes')) || [],
+export const useRecipeStore = create((set, get) => ({
+  recipes: [],
+  searchTerm: '',
+  filteredRecipes: [],
 
-  addRecipe: (newRecipe) => set(state => {
-    const updated = [...state.recipes, newRecipe];
-    localStorage.setItem('recipes', JSON.stringify(updated));
-    return { recipes: updated };
-  }),
+  // Recipe actions
+  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+  setRecipes: (recipes) => set({ recipes }),
+  updateRecipe: (id, updatedFields) =>
+    set(state => ({
+      recipes: state.recipes.map(r => (r.id === id ? { ...r, ...updatedFields } : r))
+    })),
+  deleteRecipe: (id) =>
+    set(state => ({ recipes: state.recipes.filter(r => r.id !== id) })),
 
-  updateRecipe: (id, updatedFields) => set(state => {
-    const updated = state.recipes.map(r => (r.id === id ? { ...r, ...updatedFields } : r));
-    localStorage.setItem('recipes', JSON.stringify(updated));
-    return { recipes: updated };
-  }),
-
-  deleteRecipe: (id) => set(state => {
-    const updated = state.recipes.filter(r => r.id !== id);
-    localStorage.setItem('recipes', JSON.stringify(updated));
-    return { recipes: updated };
-  }),
+  // Search actions
+  setSearchTerm: (term) => {
+    set({ searchTerm: term });
+    get().filterRecipes(term);
+  },
+  filterRecipes: (term) =>
+    set(state => ({
+      filteredRecipes: state.recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(term.toLowerCase())
+      )
+    }))
 }));
