@@ -1,21 +1,23 @@
 import { create } from 'zustand';
 
-export const useRecipeStore = create((set, get) => ({
-  recipes: [],
+export const useRecipeStore = create((set) => ({
+  recipes: JSON.parse(localStorage.getItem('recipes')) || [],
 
-  // add one recipe object: { id, title, description, ingredients?, prepTime? }
-  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+  addRecipe: (newRecipe) => set(state => {
+    const updated = [...state.recipes, newRecipe];
+    localStorage.setItem('recipes', JSON.stringify(updated));
+    return { recipes: updated };
+  }),
 
-  // replace the recipes list
-  setRecipes: (recipes) => set({ recipes }),
+  updateRecipe: (id, updatedFields) => set(state => {
+    const updated = state.recipes.map(r => (r.id === id ? { ...r, ...updatedFields } : r));
+    localStorage.setItem('recipes', JSON.stringify(updated));
+    return { recipes: updated };
+  }),
 
-  // update an existing recipe by id
-  updateRecipe: (id, updatedFields) =>
-    set(state => ({
-      recipes: state.recipes.map(r => (r.id === id ? { ...r, ...updatedFields } : r))
-    })),
-
-  // delete by id
-  deleteRecipe: (id) =>
-    set(state => ({ recipes: state.recipes.filter(r => r.id !== id) }))
+  deleteRecipe: (id) => set(state => {
+    const updated = state.recipes.filter(r => r.id !== id);
+    localStorage.setItem('recipes', JSON.stringify(updated));
+    return { recipes: updated };
+  }),
 }));
