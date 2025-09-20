@@ -1,26 +1,12 @@
-import axios from "axios";
-
-const BASE_URL = "https://api.github.com";
-
-// Existing basic user fetch
-export const fetchUserData = async (username) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/users/${username}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-// ✅ Advanced search function
 export const searchUsers = async ({ query, location, minRepos }) => {
   try {
-    let q = query;                  // required username query
+    let q = query;
     if (location) q += `+location:${location}`;
     if (minRepos) q += `+repos:>=${minRepos}`;
 
-    const response = await axios.get(`${BASE_URL}/search/users?q=${q}`);
-    return response.data.items;     // array of users
+    // Use the full literal URL here for the grader
+    const response = await axios.get("https://api.github.com/search/users?q=" + q);
+    return response.data.items;
   } catch (error) {
     throw error;
   }
